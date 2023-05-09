@@ -101,7 +101,7 @@ node2.next = node3
 console.log(node1) // {val: 1, next: {val: 2, next: {val: 3, next: null}}}
 ```
 
-Так как все объекты выше идут от `node1`, `node1` - начало связного списка. Чтобы добавить новый объект в `{val: 1, next: {val: 2, next: {val: 3, next: null}}}`, ном просто нужно указать ссылку `next` нового объекта на `node1`.
+Так как все объекты выше идут от `node1`, `node1` - начало связного списка. Чтобы добавить новый объект в `{val: 1, next: {val: 2, next: {val: 3, next: null}}}`, нам просто нужно указать ссылку `next` нового объекта на `node1`.
 ```JS
 const newNode = new Node(10);
 newNode.next = node1
@@ -132,8 +132,7 @@ ___
 ### Add last
 
 ```Typescript
-function addLst(node: Node): void {
-}
+function addLst(node: Node): void {}
 ```
 
 ![add-last](animation/add-last.gif)
@@ -142,8 +141,7 @@ ___
 ### Add node at index
 
 ```Typescript
-function addAt(index: number, node: Node): void {
-}
+function addAt(index: number, node: Node): void {}
 ```
 
 ![!addAt](animation/addAt.gif)
@@ -152,8 +150,7 @@ ___
 ### Remove first
 
 ```Typescript
-function removeFirst(): void {
-}
+function removeFirst(): void {}
 ```
 
 ![!remove-first](animation/remove-first.gif)
@@ -162,8 +159,7 @@ ___
 ### Remove last
 
 ```Typescript
-function removeLast(): void {
-}
+function removeLast(): void {}
 ```
 
 ![remove-last](animation/remove-last.gif)
@@ -172,8 +168,7 @@ ___
 ### Remove at index
 
 ```Typescript
-function removeAt(index: number): void {
-}
+function removeAt(index: number): void {}
 ```
 
 ![remove-at](animation/remove-at.gif)
@@ -182,8 +177,7 @@ ___
 ### Get at index
 
 ```Typescript
-function getAt(index: number): Node {
-}
+function getAt(index: number): Node {}
 ```
 
 ![get-at](animation/get-at.gif)
