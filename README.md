@@ -19,8 +19,8 @@
 * Память: выделяется отдельный блок памяти для каждого элемента, размер списка может меняться динамически.
 
 ## Связный список в JS
+Связный список (далее - СС) это объект в котором есть ключ `val` и ссылка на другой объект `next`.   
 Представьте, что у нас есть 3 объекта `node1`, `node2` и `node3`:
-
 ```JS
 const node1 = {
     val: 1,
@@ -40,7 +40,6 @@ const node3 = {
 ```
 
 Если `node1.next` указать на объект `node2`, то у нас получится **СВЯЗНЫЙ СПИСОК**:
-
 ```JS
 const linkedList = node1
 
@@ -48,17 +47,15 @@ node1.next = node2
 node2.next = node3
 ```
 
-В коде выше мы создали переменную `linkedList`, которая равна `node1` (`node1` - начало связного списка). Далее
+В коде выше связный список `linkedList` равен `node1` (`node1` - начало связного списка). Далее
 в `node1.next` указали ссылку на объект `node2`. Почему ссылку? В JS переменная `node1` (node2, node3) хранит в себе не
 сам объект, а ссылку на память, где хранится объект. Если сделать `console.log(linkedList)`, то мы получим:
-
 ```JS
 // {val: 1, next: {val: 2, next: {val: 3, next: null}}}
 ```
 
 Если `next` указывает на `null`, то это конец связного списка.   
 Для того чтобы создавать объекты (ноды) связного списка, мы добавим класс `Node`:
-
 ```JS
 class Node {
     constructor(value, next = null) {
@@ -69,7 +66,6 @@ class Node {
 ```
 
 Теперь давайте создадим 3 объекта `node1`, `node2` и `node3` используя класс `Node`:
-
 ```JS
 const node1 = new Node(1)
 const node2 = new Node(2)
@@ -94,24 +90,27 @@ console.log(linkedList) // {val: 1, next: {val: 2, next: {val: 3, next: null}}}
 const node1 = new Node(1) // node1 = {val: 1, next: null}
 const node2 = new Node(2) // node2 = {val: 2, next: null}
 const node3 = new Node(3) // node3 = {val: 3, next: null}
+const node4 = new Node(4) // node4 = {val: 4, next: null}
+const node5 = new Node(5) // node5 = {val: 5, next: null}
 
-node1.next = node2
 node2.next = node3
+node3.next = node4
+node4.next = node5
 
-console.log(node1) // {val: 1, next: {val: 2, next: {val: 3, next: null}}}
+console.log(node2) // {val: 2, next: {val: 3, next: {val: 4, next: {val: 5, next: null}}}}
 ```
 
-Так как все объекты выше идут от `node1`, `node1` - начало связного списка. Чтобы добавить новый объект в начало `{val: 1, next: {val: 2, next: {val: 3, next: null}}}`, нам просто нужно указать ссылку `next` нового объекта на `node1`.
+Так как все объекты выше идут от `node2`, `node2` - начало связного списка. Чтобы добавить новый объект в начало `{val: 2, next: {val: 3, next: {val: 4, next: {val: 5, next: null}}}}`, нам просто нужно указать ссылку `next` нового объекта на `node2`: 
 ```JS
-const newNode = new Node(10);
-newNode.next = node1
-console.log(newNode) // {val: 10, next: {val: 1, next: {val: 2, next: {val: 3, next: null}}}}
+const newNode = new Node(1);
+newNode.next = node2
+console.log(newNode) // {val: 1, next: {val: 2, next: {val: 3, next: {val: 4, next: {val: 5, next: null}}}}}
 ```
 
 Можно и так:
 ```JS
-const newNode = new Node(10, node1);
-console.log(newNode) // {val: 10, next: {val: 1, next: {val: 2, next: {val: 3, next: null}}}}
+const newNode = new Node(1, node2);
+console.log(newNode) // {val: 1, next: {val: 2, next: {val: 3, next: {val: 4, next: {val: 5, next: null}}}}}
 ```
 
 Напишите метод `addFirst` в файле `linkedList` и запустите в терминале проверку на этот метод через команду:
